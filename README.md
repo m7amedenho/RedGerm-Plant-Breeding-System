@@ -1,7 +1,7 @@
 <div align="center">
-
-<br/>
 <div align="center">
+<br/>
+
 ```
 ██████╗ ███████╗██████╗  ██████╗ ███████╗██████╗ ███╗   ███╗
 ██╔══██╗██╔════╝██╔══██╗██╔════╝ ██╔════╝██╔══██╗████╗ ████║
@@ -10,11 +10,11 @@
 ██║  ██║███████╗██████╔╝╚██████╔╝███████╗██║  ██║██║ ╚═╝ ██║
 ╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
 ```
-</div>
+
 **Enterprise Plant Breeding & Trial Management System**
 
 *From genetic material to variety release — one unified platform.*
-
+</div>
 <br/>
 
 ![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
