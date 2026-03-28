@@ -1,7 +1,7 @@
 <div align="center">
 
 <br/>
-
+<div align="center">
 ```
 ██████╗ ███████╗██████╗  ██████╗ ███████╗██████╗ ███╗   ███╗
 ██╔══██╗██╔════╝██╔══██╗██╔════╝ ██╔════╝██╔══██╗████╗ ████║
@@ -10,7 +10,7 @@
 ██║  ██║███████╗██████╔╝╚██████╔╝███████╗██║  ██║██║ ╚═╝ ██║
 ╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
 ```
-
+</div>
 **Enterprise Plant Breeding & Trial Management System**
 
 *From genetic material to variety release — one unified platform.*
