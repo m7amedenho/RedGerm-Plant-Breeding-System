@@ -1,20 +1,18 @@
 <div align="center">
-<div align="center">
-<br/>
 
-```
+<pre>
 ██████╗ ███████╗██████╗  ██████╗ ███████╗██████╗ ███╗   ███╗
 ██╔══██╗██╔════╝██╔══██╗██╔════╝ ██╔════╝██╔══██╗████╗ ████║
 ██████╔╝█████╗  ██║  ██║██║  ███╗█████╗  ██████╔╝██╔████╔██║
 ██╔══██╗██╔══╝  ██║  ██║██║   ██║██╔══╝  ██╔══██╗██║╚██╔╝██║
 ██║  ██║███████╗██████╔╝╚██████╔╝███████╗██║  ██║██║ ╚═╝ ██║
 ╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
-```
+</pre>
 
-**Enterprise Plant Breeding & Trial Management System**
+### **Enterprise Plant Breeding & Trial Management System**
 
 *From genetic material to variety release — one unified platform.*
-</div>
+
 <br/>
 
 ![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
