@@ -272,13 +272,8 @@ Built as a production-grade agriculture platform combining deep domain knowledge
 
 -----
 
-\<div align="center"\>
+<div align="center"\>
 
 *RedGerm — Precision breeding management, built for the field.*
 
-\</div\>
-
-```
-
-هل تحتاجني أن أضيف أي توضيحات أخرى حول هيكلة المجلدات أو طريقة تشغيل البيئة محلياً؟
-```
+</div\>
