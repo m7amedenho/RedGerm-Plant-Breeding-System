@@ -46,7 +46,7 @@ No broken links. No data loss across generations. No spreadsheet chaos.
 
 ## Core Features
 
-### 🧬 Breeding Management
+### Breeding Management
 
 **Plant Material Registry**
 Register incoming seed accessions with full metadata — crop, generation (F1–F99 and BC series), pollination type, supported breeding methods (SSD, Pedigree, Bulk, Backcross, and more). Each material gets an auto-generated structured code (`TOM-M-001`).
@@ -62,7 +62,7 @@ Record hybridization crosses with parent compatibility validation, execution tra
 
 ---
 
-### 🌾 Field Trial Lifecycle
+### Field Trial Lifecycle
 
 **7-Step Setup Wizard**
 A guided wizard that structures trial creation from start to publish:
@@ -95,7 +95,7 @@ Log temperature (max/min), humidity, soil EC, soil pH, rainfall, and notes per t
 
 ---
 
-### 📊 Selection & Analytics
+### Selection & Analytics
 
 **Selection Algorithm**
 Set standard trait criteria with target values, direction (max/min/exact), and weights. The system calculates a weighted similarity score for every active plant and ranks them. Engineers review the ranked list, select manually or by threshold, and confirm. Non-selected plants are automatically marked as dropped.
@@ -105,7 +105,7 @@ Trait distribution analysis, generation comparison across breeding cycles, segre
 
 ---
 
-### 🌍 Variety Catalog & Evaluation
+### Variety Catalog & Evaluation
 
 **Public Variety System**
 Breeding engineers can request to publish a variety. After admin approval, it enters the public catalog where field trial engineers and external evaluators can access it.
@@ -123,7 +123,7 @@ Compile evaluation results, compute performance summaries, and make structured `
 
 ---
 
-### 🗄️ Seed Inventory & Storage
+### Seed Inventory & Storage
 
 **Storage Mapping**
 Define storage locations (freezers, cold rooms, dry stores, cabinets) with shelves and slots. Slot occupancy is computed dynamically — no stale flags.
@@ -139,7 +139,7 @@ Current stock, movement history, low stock alerts, expiry alerts, and a visual s
 
 ---
 
-### 🤖 AI Integration
+### AI Integration
 
 RedGerm integrates with an AI gateway for:
 - **Report generation** — AI-assisted narrative reports from trial and harvest data
@@ -148,7 +148,7 @@ RedGerm integrates with an AI gateway for:
 
 ---
 
-### 🖨️ Printing Stack
+### Printing Stack
 
 **ZPL Label Printing**
 Direct thermal printing via QZ Tray agent (installed locally on engineer's machine). Supports any ZPL-compatible printer (Zebra, TSC, Godex, Bixolon, and others). Label size is configurable: 30×20mm, 40×25mm, 50×30mm, 60×40mm, or custom dimensions. DPI-aware dot calculation.
@@ -164,7 +164,7 @@ Full trial report: summary, entities, field layout, environmental data, visit su
 
 ---
 
-### 🔐 Governance & Security
+### Governance & Security
 
 **Role-Based Access Control**
 Fine-grained permissions via Spatie Laravel Permission. Roles include: Admin, Researcher, Breeding Engineer, Field Trial Engineer, Evaluator, and Viewer. Every route is permission-guarded.
@@ -183,7 +183,7 @@ Account creation is admin-controlled only. No self-signup endpoint exists.
 
 ---
 
-### ⚡ Performance & Field Readiness
+### Performance & Field Readiness
 
 **PWA Support**
 Full Progressive Web App with service worker and manifest. Engineers can install RedGerm on tablets and use it offline in the field. QR scanning works from the installed app.
