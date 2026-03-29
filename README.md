@@ -262,7 +262,7 @@ Printing             ZPL labels, PDF reports, seed passports
 
 ## Author
 
-**Mohamed Hamed** — Founder at Codly | Software Architect
+**Mohamed Hamed**
 
 Built as a production-grade agriculture platform combining deep domain knowledge with modern distributed systems engineering.
 
