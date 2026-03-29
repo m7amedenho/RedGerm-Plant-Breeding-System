@@ -1,3 +1,4 @@
+
 <div align="center">
 
 <pre>
@@ -19,12 +20,17 @@
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111827)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![R](https://img.shields.io/badge/R_Lang-Statistical_Analysis-276DC3?style=for-the-badge&logo=r&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![jsreport](https://img.shields.io/badge/jsreport-000000?style=for-the-badge&logo=javascript&logoColor=white)
+![OpenWeb_UI](https://img.shields.io/badge/OpenWeb_UI-000000?style=for-the-badge)
 ![PWA](https://img.shields.io/badge/PWA-Enabled-0ea5e9?style=for-the-badge)
 ![i18n](https://img.shields.io/badge/Arabic%2FEnglish-Bilingual-16a34a?style=for-the-badge)
 
 <br/>
 
-> 🌱 Built for real operational breeding teams — not just dashboards.
+> Built for real operational breeding teams — not just dashboards.
 
 </div>
 
@@ -36,13 +42,67 @@ RedGerm is a full-stack, domain-heavy agriculture platform that replaces fragmen
 
 **The complete chain:**
 
-```
+```text
 Material → Breeding Unit → Crossing → Trial → Selection → Harvest → Seed Inventory → Variety Decision
-```
+````
 
 No broken links. No data loss across generations. No spreadsheet chaos.
 
----
+-----
+
+## System Architecture: Distributed Microservices Ecosystem
+
+To ensure high availability, scalability, and optimal performance for computationally heavy tasks, RedGerm is designed around a **Microservices-oriented architecture**. Instead of relying on a single monolithic bottleneck, domain-specific tasks are delegated to specialized services.
+
+The main **Laravel** application acts as the Core API and Orchestrator, delegating intensive workloads (like statistical analysis, AI processing, heavy reporting, and data crunching) to dedicated microservices written in the most suitable languages (**R**, **Python**, **Java**, and **Node.js** via jsreport).
+
+### Architecture Flow
+
+```text
+                                  +-----------------------+
+                                  |    User Interface     |
+                                  | (React 19 + Inertia)  |
+                                  +-----------+-----------+
+                                              |
+                                              v
++----------------+               +-------------------------+                +------------------+
+|   AI Portal    | <-----------> |   CORE ORCHESTRATOR     | <------------> |    Database      |
+| (OpenWeb UI)   |               | (Laravel 12 / PHP 8.4)  |                | (PostgreSQL 16)  |
++-------+--------+               |  - Auth & Governance    |                +------------------+
+        |                        |  - Business Logic       |
+        v                        |  - API Gateway          |
++----------------+               |  - Job Queue Management |                +------------------+
+| Python Service | <-------------+-----------+-------------+--------------> | Enterprise Print |
+| - AI Gateway   |               |           |             |                | & Reporting Node |
+| - ML Models    |               |           v             |                |    (jsreport)    |
++----------------+      +-------------------+   +-------------------+       +------------------+
+                        |   Java Service    |   |     R Service     |
+                        | - Heavy Crunching |   | - Stat. Analysis  |
+                        | - ZPL Queue Mgmt  |   | - Heritability    |
+                        +-------------------+   +-------------------+
+```
+
+### Service Breakdown
+
+**1. Core Orchestrator (Laravel 12)**
+Acts as the central nervous system. Handles HTTP requests, Role-Based Access Control (RBAC), database transactions, and overall state management. Dispatches asynchronous events and jobs to the worker services so the main thread is never blocked by heavy operations.
+
+**2. Statistical & Agronomic Engine (R Language)**
+Dedicated purely to the mathematics of plant breeding. Receives raw trial datasets and computes rigorous agricultural statistics, including ANOVA, heritability estimates, trait segregation patterns, and principal component analysis (PCA) for multi-environment trials.
+
+**3. AI & Data Science Node (Python)**
+Dedicated environment for machine learning. Handles the Selection Algorithm computations and structures unstructured data. Acts as the backend for the AI Gateway, generating narrative reports from raw harvest data.
+
+**4. Interactive AI Interface (OpenWeb UI)**
+A self-hosted, highly customizable user interface for interacting with the AI models. Provides breeding engineers with a conversational portal to query trial data, ask for smart suggestions during setup, or request specific analytics from the Python node.
+
+**5. High-Performance Computation Node (Java)**
+Utilized for CPU-intensive, multi-threaded background processing. Manages complex data transformations (like resolving deep lineage and family trees across thousands of generations) and handles high-throughput integrations, such as batching and streaming massive ZPL print queues to thermal printers seamlessly.
+
+**6. Dedicated Reporting Engine (jsreport)**
+Offloads the memory-intensive task of generating enterprise-grade PDFs from PHP. Compiles complex templates (Trial Reports, Seed Passports with QR codes, images, and charts) using standard web technologies (HTML/CSS/JS) and converts them to high-fidelity PDFs efficiently.
+
+-----
 
 ## Core Features
 
@@ -60,29 +120,29 @@ Interactive visual family tree powered by React Flow and dagre layout. Navigate 
 **Crossing Module**
 Record hybridization crosses with parent compatibility validation, execution tracking, pollination method, and result recording. Crosses automatically feed into the lineage graph.
 
----
-
 ### Field Trial Lifecycle
 
 **7-Step Setup Wizard**
 A guided wizard that structures trial creation from start to publish:
-1. Trial information (crop, season, location, breeding method)
-2. Entities — link materials/BUs with seed lots from inventory
-3. Trial design — CRD, RCBD, Alpha Lattice, Split Plot, Augmented, P-Rep, or Custom
-4. Plant map generation with automatic layout per design type
-5. Visit schedule planning
-6. Label printing
-7. Publish to execution
+
+1.  Trial information (crop, season, location, breeding method)
+2.  Entities — link materials/BUs with seed lots from inventory
+3.  Trial design — CRD, RCBD, Alpha Lattice, Split Plot, Augmented, P-Rep, or Custom
+4.  Plant map generation with automatic layout per design type
+5.  Visit schedule planning
+6.  Label printing
+7.  Publish to execution
 
 **Experimental Design Engine**
 Built-in support for standard agricultural trial designs with randomization:
-- **CRD** — Completely Randomized Design (homogeneous environments)
-- **RCBD** — Randomized Complete Block Design (field gradients)
-- **Alpha Lattice** — for large entry counts
-- **Split Plot** — two-factor experiments
-- **Augmented** — new entries + replicated checks
-- **P-Rep** — partially replicated designs
-- **Custom** — manual row-by-row entry assignment
+
+  - **CRD** — Completely Randomized Design (homogeneous environments)
+  - **RCBD** — Randomized Complete Block Design (field gradients)
+  - **Alpha Lattice** — for large entry counts
+  - **Split Plot** — two-factor experiments
+  - **Augmented** — new entries + replicated checks
+  - **P-Rep** — partially replicated designs
+  - **Custom** — manual row-by-row entry assignment
 
 **Plant-Level Execution**
 Each plant gets a unique code (`TR-2024-001-R01-P001`) with a QR label. During execution, engineers observe and score traits plant by plant — from a map view or via QR scan. Observations respect trait data types: numeric inputs, percentage sliders, boolean toggles, select dropdowns, and free text.
@@ -93,111 +153,58 @@ Select from a structured Pest & Disease Library (general or crop-specific) with 
 **Daily Environmental Logs**
 Log temperature (max/min), humidity, soil EC, soil pH, rainfall, and notes per trial day — with photo upload.
 
----
-
 ### Selection & Analytics
 
 **Selection Algorithm**
 Set standard trait criteria with target values, direction (max/min/exact), and weights. The system calculates a weighted similarity score for every active plant and ranks them. Engineers review the ranked list, select manually or by threshold, and confirm. Non-selected plants are automatically marked as dropped.
 
 **Breeding Analytics**
-Trait distribution analysis, generation comparison across breeding cycles, segregation pattern visualization, and heritability insights — built for making evidence-based advancement decisions.
-
----
+Trait distribution analysis, generation comparison across breeding cycles, segregation pattern visualization, and heritability insights computed via the R microservice — built for making evidence-based advancement decisions.
 
 ### Variety Catalog & Evaluation
 
 **Public Variety System**
-Breeding engineers can request to publish a variety. After admin approval, it enters the public catalog where field trial engineers and external evaluators can access it.
-
-Three visibility levels: `Private → Public → Released`
+Breeding engineers can request to publish a variety. After admin approval, it enters the public catalog where field trial engineers and external evaluators can access it. Visibility levels: `Private → Public → Released`.
 
 **Evaluation Trial System**
 A simplified but complete trial system for field trial engineers evaluating named varieties. Supports multi-location comparison of the same variety across environments.
 
-**External Evaluator Portal**
-Restricted portal for external evaluators — they see only assigned public varieties, submit evaluations, and upload photos. No access to breeding data.
-
 **Variety Advancement Pipeline**
 Compile evaluation results, compute performance summaries, and make structured `Continue / Drop / Adopt` decisions backed by data.
-
----
 
 ### Seed Inventory & Storage
 
 **Storage Mapping**
 Define storage locations (freezers, cold rooms, dry stores, cabinets) with shelves and slots. Slot occupancy is computed dynamically — no stale flags.
 
-**Seed Lots**
-Each lot carries: source material/BU, quantity (grams or seed count — not both forced), germination %, purity %, harvest date, expiry date, supplier info, and storage slot assignment.
-
 **Transaction Ledger**
 Every movement is recorded: initial receipt, returns, and disposals. Running balance is maintained per transaction. No transaction can be soft-deleted — the audit trail is permanent.
-
-**Inventory Reports**
-Current stock, movement history, low stock alerts, expiry alerts, and a visual storage map showing what's in every slot.
-
----
-
-### AI Integration
-
-RedGerm integrates with an AI gateway for:
-- **Report generation** — AI-assisted narrative reports from trial and harvest data
-- **Smart suggestions** — contextual hints during trial setup and wizard steps
-- **Operational workflows** — AI-enabled actions embedded in the platform
-
----
 
 ### Printing Stack
 
 **ZPL Label Printing**
-Direct thermal printing via QZ Tray agent (installed locally on engineer's machine). Supports any ZPL-compatible printer (Zebra, TSC, Godex, Bixolon, and others). Label size is configurable: 30×20mm, 40×25mm, 50×30mm, 60×40mm, or custom dimensions. DPI-aware dot calculation.
+Direct thermal printing via QZ Tray agent. Supports any ZPL-compatible printer. Label size is configurable with DPI-aware dot calculation. Processed efficiently via the Java microservice.
 
-**PDF Fallback**
-A4 label grid PDF for engineers without a thermal printer. Server-side generation via DomPDF with embedded QR codes.
-
-**Seed Passport PDF**
-Formal A4 document for any seed lot — source, lineage chain, storage location, quantities, germination, expiry, and origin trial.
-
-**Trial Report PDF**
-Full trial report: summary, entities, field layout, environmental data, visit summary, trait statistics, disease summary, selection results, harvest output, and photo gallery.
-
----
+**Reporting Engine**
+High-fidelity Trial Report PDFs and Seed Passports generated dynamically via the dedicated jsreport node.
 
 ### Governance & Security
 
 **Role-Based Access Control**
-Fine-grained permissions via Spatie Laravel Permission. Roles include: Admin, Researcher, Breeding Engineer, Field Trial Engineer, Evaluator, and Viewer. Every route is permission-guarded.
-
-**Data Isolation**
-Each user sees only their own data by default. Admins see all. Public varieties are selectively visible based on approval status. No cross-user data leakage.
+Fine-grained permissions. Roles include: Admin, Researcher, Breeding Engineer, Field Trial Engineer, Evaluator, and Viewer. Every route is permission-guarded.
 
 **Audit Trail**
 Centralized audit log for sensitive actions — who did what, when, from where. Includes browser and OS fingerprint.
 
-**Lock Screen**
-Fast re-entry flow for shared workstations. After inactivity, the screen locks and the known user is prompted for password only — no need to re-enter email.
-
-**No Public Registration**
-Account creation is admin-controlled only. No self-signup endpoint exists.
-
----
-
 ### Performance & Field Readiness
 
 **PWA Support**
-Full Progressive Web App with service worker and manifest. Engineers can install RedGerm on tablets and use it offline in the field. QR scanning works from the installed app.
-
-**QR Scanning**
-Camera-based QR scanning built into the observation workspace. Engineers scan a plant's label → jump directly to its observation form. Manual fallback input included.
+Full Progressive Web App with service worker and manifest. Engineers can install RedGerm on tablets and use it offline in the field.
 
 **Bilingual (Arabic / English)**
 Full RTL/LTR runtime switching. Every label, error, and tooltip is translated. Direction switches instantly without reload.
 
-**Autosave**
-Trial wizard steps autosave on field blur. Engineers never lose progress mid-setup.
-
----
+-----
 
 ## Project Scale
 
@@ -209,31 +216,29 @@ Trial wizard steps autosave on field blur. Engineers never lose progress mid-set
 | Frontend Pages (TSX) | 89 |
 | Feature & Unit Tests | 28 |
 
----
+-----
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Backend | Laravel 12, PHP 8.4 |
+| Core Backend | Laravel 12, PHP 8.4 |
 | Frontend | React 19, TypeScript, Inertia.js v2 |
 | Database | PostgreSQL 16 |
-| Auth | Laravel Fortify + Spatie Permission |
-| Media | Spatie Media Library |
-| Export | Laravel Excel, DomPDF |
-| Printing | QZ Tray, Zebra ZPL |
-| Analytics | Custom statistical engine |
-| AI | AI gateway integration |
-| UX | PWA manifest + service worker |
-| i18n | English / Arabic with RTL switching |
-| UI | shadcn/ui, Tailwind CSS |
+| Statistical Analysis | R Language |
+| AI / Data Science Node | Python |
+| Heavy Computation Node| Java |
+| Print & Report Node | Node.js, jsreport |
+| AI Interface | OpenWeb UI |
+| Auth & Security | Laravel Fortify + Spatie Permission |
+| UI Framework | shadcn/ui, Tailwind CSS |
 | Visualization | React Flow, Recharts, dagre |
 
----
+-----
 
 ## Domain Coverage
 
-```
+```text
 Master Data          Crops, traits, seasons, locations, pest & disease library
 Breeding             Materials, breeding units, crossings, lineage/family tree
 Field Trials         Full lifecycle: design → execution → selection → harvest
@@ -245,7 +250,7 @@ Governance           Users, roles, permissions, audit log, lock screen
 Printing             ZPL labels, PDF reports, seed passports
 ```
 
----
+-----
 
 ## Access
 
@@ -253,22 +258,27 @@ Printing             ZPL labels, PDF reports, seed passports
 >
 > For demo access, collaboration inquiries, or licensing, contact the author directly.
 
----
+-----
 
 ## Author
 
-**Mohamed Hamed** — Full Stack Developer
+**Mohamed Hamed** — Founder at Codly | Software Architect
 
-Built as a production-grade agriculture platform combining deep domain knowledge with modern engineering.
+Built as a production-grade agriculture platform combining deep domain knowledge with modern distributed systems engineering.
 
-[![GitHub](https://img.shields.io/badge/GitHub-m7amedenho-181717?style=flat-square&logo=github)](https://github.com/m7amedenho)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-m7amedenho-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/m7amedenho)
-[![Portfolio](https://img.shields.io/badge/Portfolio-7amedenho.vercel.app-000?style=flat-square)](https://7amedenho.vercel.app)
+[](https://github.com/m7amedenho)
+[](https://linkedin.com/in/m7amedenho)
+[](https://7amedenho.vercel.app)
 
----
+-----
 
-<div align="center">
+\<div align="center"\>
 
 *RedGerm — Precision breeding management, built for the field.*
 
-</div>
+\</div\>
+
+```
+
+هل تحتاجني أن أضيف أي توضيحات أخرى حول هيكلة المجلدات أو طريقة تشغيل البيئة محلياً؟
+```
