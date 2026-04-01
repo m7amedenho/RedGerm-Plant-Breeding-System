@@ -22,8 +22,6 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![R](https://img.shields.io/badge/R_Lang-Statistical_Analysis-276DC3?style=for-the-badge&logo=r&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![jsreport](https://img.shields.io/badge/jsreport-000000?style=for-the-badge&logo=javascript&logoColor=white)
 ![OpenWeb_UI](https://img.shields.io/badge/OpenWeb_UI-000000?style=for-the-badge)
 ![PWA](https://img.shields.io/badge/PWA-Enabled-0ea5e9?style=for-the-badge)
 ![i18n](https://img.shields.io/badge/Arabic%2FEnglish-Bilingual-16a34a?style=for-the-badge)
@@ -71,11 +69,11 @@ The main **Laravel** application acts as the Core API and Orchestrator, delegati
 +-------+--------+               |  - Auth & Governance    |                +------------------+
         |                        |  - Business Logic       |
         v                        |  - API Gateway          |
-+----------------+               |  - Job Queue Management |                +------------------+
++----------------+               |  - Job Queue Management |               
 | Python Service | <-------------+-----------+-------------+--------------> | Enterprise Print |
-| - AI Gateway   |               |           |             |                | & Reporting Node |
-| - ML Models    |               |           v             |                |    (jsreport)    |
-+----------------+      +-------------------+   +-------------------+       +------------------+
+| - AI Gateway   |               |           |             |
+| - ML Models    |               |           v             |
++----------------+      +-------------------+   +-------------------+
                         |   Java Service    |   |     R Service     |
                         | - Heavy Crunching |   | - Stat. Analysis  |
                         | - ZPL Queue Mgmt  |   | - Heritability    |
@@ -276,4 +274,4 @@ Built as a production-grade agriculture platform combining deep domain knowledge
 
 *RedGerm — Precision breeding management, built for the field.*
 
-</div\>
+</div>
